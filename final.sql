@@ -243,15 +243,15 @@ begin
     select weight into cur_weith from Shipments where vehical_id = p_vehical_id;
     select vehical_id into cur_vehical from vehicle_details where vehical_id = p_vehical_id;
     
-	if (select payload from vehicle_details) > cur_weith then
+	if (select payload from vehicle_details where vehical_id = p_vehical_id) > cur_weith then
     set message = 'Quá tải';
 	end if;
     
-    if (select payload from vehicle_details) = cur_weith then
+    if (select payload from vehicle_details where vehical_id = p_vehical_id) = cur_weith then
     set message = 'Đầy tả';
 	end if;
     
-    if (select payload from vehicle_details) > cur_weith then
+    if (select payload from vehicle_details where vehical_id = p_vehical_id) > cur_weith then
     set message = 'An toàn';
 	end if;
 
